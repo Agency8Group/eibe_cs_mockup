@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>고객센터 트리맵</title>
+    <style>
+        body {
+            font-family: 'Malgun Gothic', '맑은 고딕', Arial, sans-serif;
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .container {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .product-section {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>문의분류</h1>
+
+    <!-- 1단계: 대분류 선택 (브랜드) -->
+    <div class="container">
+        <label for="mainCategory">대분류</label>
+        <select id="mainCategory" onchange="onMainCategoryChange()">
+            <option value="">선택하세요</option>
+            <option value="dreame">드리미(dreame)</option>
+            <option value="aptamil">압타밀(Aptamil)</option>
+        </select>
+    </div>
+
+    <!-- 2단계: 중분류 선택 -->
+    <div class="container">
+        <label for="middleCategory">중분류</label>
+        <select id="middleCategory" onchange="onMiddleCategoryChange()">
+            <option value="">선택하세요</option>
+        </select>
+    </div>
+
+    <!-- 3단계: 소분류 선택 -->
+    <div class="container">
+        <label for="subCategory">소분류</label>
+        <select id="subCategory" onchange="onSubCategoryChange()">
+            <option value="">선택하세요</option>
+        </select>
+    </div>
+
+    <!-- 4단계: 제품명 선택 (대분류에 따라 변경) -->
+    <div class="container product-section">
+        <label for="productName">제품명</label>
+        <select id="productName" onchange="onProductNameChange()">
+            <option value="">선택하세요</option>
+        </select>
+    </div>
+
+    <script>
+        // 데이터 구조: 대분류(브랜드) > 중분류 > 소분류
+        const categoryData = {
+            dreame: {
+                '배송문의': ['배송 지연', '오배송', '배송지 오기입', '수취인 부재', '송장 미등록', '기타'],
+                '교환요청': ['제품 오염/이염', '제품 파손', '구성품 누락', '색상/옵션 오류', '기타'],
+                '반품요청': ['단순 변심', '제품 오염/이염', '제품 파손', '오주문', '기타'],
+                '환불요청': ['반품 후 환불 지연', '이중결제', '금액 오류', '기타'],
+                'AS접수': ['작동 불량', '부품 누락', '재포장 요청', '기타'],
+                '기타문의': ['사용방법 문의', '사은품 문의', 'CS 친절도', '기타']
+            },
+            aptamil: {
+                '배송문의': ['배송 지연', '오배송', '배송지 오기입', '수취인 부재', '송장 미등록', '기타'],
+                '교환요청': ['제품 오염/이염', '제품 파손', '포장 이상', '수량 오류', '기타'],
+                '반품요청': ['단순 변심', '제품 오염/이염', '제품 파손', '유통기한 문제', '기타'],
+                '환불요청': ['반품 후 환불 지연', '결제 취소 누락', '금액 오류', '기타'],
+                '기타문의': ['수유 관련 문의', '제품 성분 문의', '이벤트/사은품', '기타']
+            }
+        };
+
+        // 제품명 데이터: 대분류에 따라 다른 제품명
+        const productData = {
+            dreame: ['x50master'],
+            aptamil: ['프로푸트라1단계']
+        };
+
+        // 대분류 변경 시
+        function onMainCategoryChange() {
+            const mainCategory = document.getElementById('mainCategory').value;
+            const middleCategorySelect = document.getElementById('middleCategory');
+            const subCategorySelect = document.getElementById('subCategory');
+            const productNameSelect = document.getElementById('productName');
+
+            // 초기화
+            middleCategorySelect.innerHTML = '<option value="">선택하세요</option>';
+            subCategorySelect.innerHTML = '<option value="">선택하세요</option>';
+            productNameSelect.innerHTML = '<option value="">선택하세요</option>';
+
+            if (mainCategory) {
+                // 중분류 옵션 추가
+                if (categoryData[mainCategory]) {
+                    const middleCategories = Object.keys(categoryData[mainCategory]);
+                    middleCategories.forEach(category => {
+                        const option = document.createElement('option');
+                        option.value = category;
+                        option.textContent = category;
+                        middleCategorySelect.appendChild(option);
+                    });
+                }
+
+                // 제품명 옵션 추가
+                if (productData[mainCategory]) {
+                    productData[mainCategory].forEach(product => {
+                        const option = document.createElement('option');
+                        option.value = product;
+                        option.textContent = product;
+                        productNameSelect.appendChild(option);
+                    });
+                }
+            }
+        }
+
+        // 중분류 변경 시
+        function onMiddleCategoryChange() {
+            const mainCategory = document.getElementById('mainCategory').value;
+            const middleCategory = document.getElementById('middleCategory').value;
+            const subCategorySelect = document.getElementById('subCategory');
+
+            // 초기화
+            subCategorySelect.innerHTML = '<option value="">선택하세요</option>';
+
+            if (mainCategory && middleCategory && categoryData[mainCategory] && categoryData[mainCategory][middleCategory]) {
+                // 소분류 옵션 추가
+                const subCategories = categoryData[mainCategory][middleCategory];
+                subCategories.forEach(category => {
+                    const option = document.createElement('option');
+                    option.value = category;
+                    option.textContent = category;
+                    subCategorySelect.appendChild(option);
+                });
+            }
+        }
+
+        // 소분류 변경 시
+        function onSubCategoryChange() {
+            const mainCategory = document.getElementById('mainCategory').value;
+            const middleCategory = document.getElementById('middleCategory').value;
+            const subCategory = document.getElementById('subCategory').value;
+            
+            // 선택된 값들을 콘솔에 출력 (실제 사용 시 여기에 로직 추가)
+            if (mainCategory && middleCategory && subCategory) {
+                console.log('선택된 분류:', mainCategory, '>', middleCategory, '>', subCategory);
+            }
+        }
+
+        // 제품명 변경 시 (별개 로직)
+        function onProductNameChange() {
+            const productName = document.getElementById('productName').value;
+            
+            // 선택된 제품명을 콘솔에 출력 (실제 사용 시 여기에 로직 추가)
+            if (productName) {
+                console.log('선택된 제품명:', productName);
+            }
+        }
+    </script>
+</body>
+</html>
