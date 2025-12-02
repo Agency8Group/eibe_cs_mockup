@@ -23,12 +23,14 @@
 | 드리미(dreame) | 교환요청 | 구성품 누락 | x50master |
 | 드리미(dreame) | 교환요청 | 색상/옵션 오류 | x50master |
 | 드리미(dreame) | 교환요청 | 초기불량 | x50master |
+| 드리미(dreame) | 교환요청 | 클레임 사은품 지급 | x50master |
 | 드리미(dreame) | 교환요청 | 기타 | x50master |
 | 드리미(dreame) | 반품요청 | 단순 변심 | x50master |
 | 드리미(dreame) | 반품요청 | 제품 오염/이염 | x50master |
 | 드리미(dreame) | 반품요청 | 제품 파손 | x50master |
 | 드리미(dreame) | 반품요청 | 오주문 | x50master |
 | 드리미(dreame) | 반품요청 | 반품 후 환불 지연 | x50master |
+| 드리미(dreame) | 반품요청 | 클레임 사은품 지급 | x50master |
 | 드리미(dreame) | 반품요청 | 기타 | x50master |
 | 드리미(dreame) | AS접수 | 작동 불량 | x50master |
 | 드리미(dreame) | AS접수 | 부품 누락 | x50master |
@@ -110,12 +112,14 @@
 드리미(dreame)	교환요청	구성품 누락	x50master
 드리미(dreame)	교환요청	색상/옵션 오류	x50master
 드리미(dreame)	교환요청	초기불량	x50master
+드리미(dreame)	교환요청	클레임 사은품 지급	x50master
 드리미(dreame)	교환요청	기타	x50master
 드리미(dreame)	반품요청	단순 변심	x50master
 드리미(dreame)	반품요청	제품 오염/이염	x50master
 드리미(dreame)	반품요청	제품 파손	x50master
 드리미(dreame)	반품요청	오주문	x50master
 드리미(dreame)	반품요청	반품 후 환불 지연	x50master
+드리미(dreame)	반품요청	클레임 사은품 지급	x50master
 드리미(dreame)	반품요청	기타	x50master
 드리미(dreame)	AS접수	작동 불량	x50master
 드리미(dreame)	AS접수	부품 누락	x50master
