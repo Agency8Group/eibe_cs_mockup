@@ -35,7 +35,10 @@
 | 드리미(dreame) | AS접수 | 부품 누락 | x50master |
 | 드리미(dreame) | AS접수 | 재포장 요청 | x50master |
 | 드리미(dreame) | AS접수 | 기타 | x50master |
-| 드리미(dreame) | 기타문의 | 사용방법 문의 | x50master |
+| 드리미(dreame) | 사용문의 | 어플사용/연동 | x50master |
+| 드리미(dreame) | 사용문의 | 제품사용 | x50master |
+| 드리미(dreame) | 사용문의 | 소모품사용 | x50master |
+| 드리미(dreame) | 사용문의 | 기타 | x50master |
 | 드리미(dreame) | 기타문의 | 사은품 문의 | x50master |
 | 드리미(dreame) | 기타문의 | CS 친절도 | x50master |
 | 드리미(dreame) | 기타문의 | 기타 | x50master |
@@ -84,6 +87,7 @@
 - 반품요청
 - 환불요청 (압타밀만 해당)
 - AS접수 (드리미만 해당)
+- 사용문의 (드리미만 해당)
 - 기타문의
 
 ### 제품명 매핑
@@ -119,7 +123,10 @@
 드리미(dreame)	AS접수	부품 누락	x50master
 드리미(dreame)	AS접수	재포장 요청	x50master
 드리미(dreame)	AS접수	기타	x50master
-드리미(dreame)	기타문의	사용방법 문의	x50master
+드리미(dreame)	사용문의	어플사용/연동	x50master
+드리미(dreame)	사용문의	제품사용	x50master
+드리미(dreame)	사용문의	소모품사용	x50master
+드리미(dreame)	사용문의	기타	x50master
 드리미(dreame)	기타문의	사은품 문의	x50master
 드리미(dreame)	기타문의	CS 친절도	x50master
 드리미(dreame)	기타문의	기타	x50master
