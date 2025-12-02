@@ -5,73 +5,144 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>고객센터 트리맵</title>
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Malgun Gothic', '맑은 고딕', Arial, sans-serif;
-            padding: 40px;
-            max-width: 800px;
+            padding: 40px 20px;
+            max-width: 1400px;
             margin: 0 auto;
+            background: #f8f9fa;
         }
 
-        .container {
-            margin-bottom: 20px;
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #2c3e50;
+            font-weight: 300;
+            letter-spacing: 1px;
         }
 
-        label {
+        .form-container {
+            display: flex;
+            gap: 20px;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .form-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .form-group label {
             display: block;
             margin-bottom: 8px;
-            font-weight: bold;
+            font-weight: 500;
+            color: #34495e;
+            font-size: 13px;
+            letter-spacing: 0.3px;
+            transition: color 0.3s ease;
         }
 
-        select {
+        .form-group select {
             width: 100%;
-            padding: 10px;
+            padding: 14px 16px;
             font-size: 14px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            background: white;
+            color: #2c3e50;
+            cursor: pointer;
+            outline: none;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            background-size: 12px;
+            padding-right: 40px;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .product-section {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 2px solid #ddd;
+        .form-group select:hover {
+            border-color: #b0b0b0;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group select:focus {
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .form-group select:disabled {
+            background-color: #f5f5f5;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .form-group select option {
+            padding: 12px;
+            background: white;
+            color: #2c3e50;
+        }
+
+        @media (max-width: 768px) {
+            .form-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .form-group {
+                min-width: 100%;
+            }
         }
     </style>
 </head>
 <body>
     <h1>문의분류v0.0.4</h1>
 
-    <!-- 1단계: 대분류 선택 (브랜드) -->
-    <div class="container">
-        <label for="mainCategory">대분류</label>
-        <select id="mainCategory" onchange="onMainCategoryChange()">
-            <option value="">선택하세요</option>
-            <option value="dreame">드리미(dreame)</option>
-            <option value="aptamil">압타밀(Aptamil)</option>
-        </select>
-    </div>
+    <div class="form-container">
+        <!-- 1단계: 대분류 선택 (브랜드) -->
+        <div class="form-group">
+            <label for="mainCategory">대분류</label>
+            <select id="mainCategory" onchange="onMainCategoryChange()">
+                <option value="">선택하세요</option>
+                <option value="dreame">드리미(dreame)</option>
+                <option value="aptamil">압타밀(Aptamil)</option>
+            </select>
+        </div>
 
-    <!-- 2단계: 중분류 선택 -->
-    <div class="container">
-        <label for="middleCategory">중분류</label>
-        <select id="middleCategory" onchange="onMiddleCategoryChange()">
-            <option value="">선택하세요</option>
-        </select>
-    </div>
+        <!-- 2단계: 중분류 선택 -->
+        <div class="form-group" id="middleCategoryGroup">
+            <label for="middleCategory">중분류</label>
+            <select id="middleCategory" onchange="onMiddleCategoryChange()" disabled>
+                <option value="">선택하세요</option>
+            </select>
+        </div>
 
-    <!-- 3단계: 소분류 선택 -->
-    <div class="container">
-        <label for="subCategory">소분류</label>
-        <select id="subCategory" onchange="onSubCategoryChange()">
-            <option value="">선택하세요</option>
-        </select>
-    </div>
+        <!-- 3단계: 소분류 선택 -->
+        <div class="form-group" id="subCategoryGroup">
+            <label for="subCategory">소분류</label>
+            <select id="subCategory" onchange="onSubCategoryChange()" disabled>
+                <option value="">선택하세요</option>
+            </select>
+        </div>
 
-    <!-- 4단계: 제품명 선택 (대분류에 따라 변경) -->
-    <div class="container product-section">
-        <label for="productName">제품명</label>
-        <select id="productName" onchange="onProductNameChange()">
-            <option value="">선택하세요</option>
-        </select>
+        <!-- 4단계: 제품명 선택 (대분류에 따라 변경) -->
+        <div class="form-group" id="productNameGroup">
+            <label for="productName">제품명</label>
+            <select id="productName" onchange="onProductNameChange()" disabled>
+                <option value="">선택하세요</option>
+            </select>
+        </div>
     </div>
 
     <script>
@@ -111,6 +182,11 @@
             middleCategorySelect.innerHTML = '<option value="">선택하세요</option>';
             subCategorySelect.innerHTML = '<option value="">선택하세요</option>';
             productNameSelect.innerHTML = '<option value="">선택하세요</option>';
+            
+            // 비활성화
+            middleCategorySelect.disabled = true;
+            subCategorySelect.disabled = true;
+            productNameSelect.disabled = true;
 
             if (mainCategory) {
                 // 중분류 옵션 추가
@@ -122,6 +198,7 @@
                         option.textContent = category;
                         middleCategorySelect.appendChild(option);
                     });
+                    middleCategorySelect.disabled = false;
                 }
 
                 // 제품명 옵션 추가
@@ -132,6 +209,7 @@
                         option.textContent = product;
                         productNameSelect.appendChild(option);
                     });
+                    productNameSelect.disabled = false;
                 }
             }
         }
@@ -144,6 +222,7 @@
 
             // 초기화
             subCategorySelect.innerHTML = '<option value="">선택하세요</option>';
+            subCategorySelect.disabled = true;
 
             if (mainCategory && middleCategory && categoryData[mainCategory] && categoryData[mainCategory][middleCategory]) {
                 // 소분류 옵션 추가
@@ -154,6 +233,7 @@
                     option.textContent = category;
                     subCategorySelect.appendChild(option);
                 });
+                subCategorySelect.disabled = false;
             }
         }
 
