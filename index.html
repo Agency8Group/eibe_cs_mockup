@@ -94,6 +94,159 @@
             color: #2c3e50;
         }
 
+        .button-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .treemap-btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 14px 32px;
+            font-size: 15px;
+            font-weight: 500;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3);
+        }
+
+        .treemap-btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4);
+        }
+
+        .treemap-btn:active {
+            transform: translateY(0);
+        }
+
+        .treemap-container {
+            display: none;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            margin-top: 30px;
+            animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .treemap-container.show {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .treemap-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .treemap-title {
+            font-size: 24px;
+            font-weight: 500;
+            color: #2c3e50;
+            margin: 0;
+        }
+
+        .close-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            font-size: 13px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: #c0392b;
+            transform: scale(1.05);
+        }
+
+        .brand-section {
+            margin-bottom: 50px;
+        }
+
+        .brand-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding: 12px 20px;
+            background: #ecf0f1;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+
+        .category-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .category-table thead {
+            background: #34495e;
+            color: white;
+        }
+
+        .category-table th {
+            padding: 14px 16px;
+            text-align: left;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .category-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #e0e0e0;
+            color: #2c3e50;
+        }
+
+        .category-table tbody tr {
+            transition: background 0.2s ease;
+        }
+
+        .category-table tbody tr:hover {
+            background: #f8f9fa;
+        }
+
+        .category-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .middle-category {
+            font-weight: 600;
+            color: #2980b9;
+            background: #ebf5fb;
+        }
+
+        .sub-category {
+            padding-left: 30px !important;
+            color: #7f8c8d;
+        }
+
+        .product-name {
+            font-style: italic;
+            color: #95a5a6;
+        }
+
         @media (max-width: 768px) {
             .form-container {
                 flex-direction: column;
@@ -103,11 +256,28 @@
             .form-group {
                 min-width: 100%;
             }
+
+            .treemap-container {
+                padding: 20px;
+            }
+
+            .category-table {
+                font-size: 12px;
+            }
+
+            .category-table th,
+            .category-table td {
+                padding: 8px 10px;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>문의분류v0.0.4</h1>
+    <h1>문의분류v0.0.5</h1>
+
+    <div class="button-container">
+        <button class="treemap-btn" onclick="toggleTreemap()">전체 트리맵 보기</button>
+    </div>
 
     <div class="form-container">
         <!-- 1단계: 대분류 선택 (브랜드) -->
@@ -143,6 +313,14 @@
                 <option value="">선택하세요</option>
             </select>
         </div>
+    </div>
+
+    <div class="treemap-container" id="treemapContainer">
+        <div class="treemap-header">
+            <h2 class="treemap-title">전체 문의분류 트리맵</h2>
+            <button class="close-btn" onclick="toggleTreemap()">닫기</button>
+        </div>
+        <div id="treemapContent"></div>
     </div>
 
     <script>
@@ -257,6 +435,65 @@
             if (productName) {
                 console.log('선택된 제품명:', productName);
             }
+        }
+
+        // 트리맵 토글
+        function toggleTreemap() {
+            const container = document.getElementById('treemapContainer');
+            container.classList.toggle('show');
+            
+            if (container.classList.contains('show')) {
+                renderTreemap();
+            }
+        }
+
+        // 트리맵 렌더링
+        function renderTreemap() {
+            const content = document.getElementById('treemapContent');
+            let html = '';
+
+            // 각 브랜드별로 트리맵 생성
+            Object.keys(categoryData).forEach(brand => {
+                const brandName = brand === 'dreame' ? '드리미(dreame)' : '압타밀(Aptamil)';
+                const products = productData[brand];
+                
+                html += `<div class="brand-section">`;
+                html += `<div class="brand-title">${brandName}</div>`;
+                html += `<table class="category-table">`;
+                html += `<thead><tr><th style="width: 15%;">대분류</th><th style="width: 20%;">중분류</th><th style="width: 40%;">소분류</th><th style="width: 25%;">제품명</th></tr></thead>`;
+                html += `<tbody>`;
+
+                // 중분류별로 순회
+                Object.keys(categoryData[brand]).forEach(middleCategory => {
+                    const subCategories = categoryData[brand][middleCategory];
+                    const rowspan = subCategories.length;
+                    
+                    subCategories.forEach((subCategory, index) => {
+                        html += `<tr>`;
+                        
+                        // 첫 번째 행에만 대분류와 중분류 표시
+                        if (index === 0) {
+                            html += `<td rowspan="${rowspan}" style="font-weight: 600; color: #2c3e50; vertical-align: top; padding-top: 16px;">${brandName}</td>`;
+                            html += `<td rowspan="${rowspan}" class="middle-category" style="vertical-align: top; padding-top: 16px;">${middleCategory}</td>`;
+                        }
+                        
+                        html += `<td class="sub-category">${subCategory}</td>`;
+                        
+                        // 첫 번째 행에만 제품명 표시
+                        if (index === 0) {
+                            html += `<td rowspan="${rowspan}" class="product-name" style="vertical-align: top; padding-top: 16px;">${products.join(', ')}</td>`;
+                        }
+                        
+                        html += `</tr>`;
+                    });
+                });
+
+                html += `</tbody>`;
+                html += `</table>`;
+                html += `</div>`;
+            });
+
+            content.innerHTML = html;
         }
     </script>
 </body>
