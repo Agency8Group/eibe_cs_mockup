@@ -287,6 +287,7 @@
                 <option value="">선택하세요</option>
                 <option value="dreame">드리미(dreame)</option>
                 <option value="aptamil">압타밀(Aptamil)</option>
+                <option value="fortimel">포티밀(Fortimel)</option>
             </select>
         </div>
 
@@ -336,17 +337,27 @@
             },
             aptamil: {
                 '배송문의': ['배송 지연', '오배송', '배송지 오기입', '수취인 부재', '송장 미등록', '기타'],
+                '직구관련 문의 (통관)': ['기타'],
                 '교환요청': ['제품 오염/이염', '제품 파손', '이물질', '수량 오류', '기타'],
                 '반품요청': ['단순 변심', '제품 오염/이염', '제품 파손', '유통기한 문제', '부분환불', '기타'],
                 '환불요청': ['반품 후 환불 지연', '기타'],
-                '기타문의': ['수유 관련 문의', '제품 성분 문의', '이벤트/사은품', '기타']
+                '기타문의': ['섭취관련 문의', '제품 성분 문의', '이벤트/사은품', '기타']
+            },
+            fortimel: {
+                '배송문의': ['배송 지연', '오배송', '배송지 오기입', '수취인 부재', '송장 미등록', '기타'],
+                '직구관련 문의 (통관)': ['기타'],
+                '교환요청': ['제품 오염/이염', '제품 파손', '이물질', '수량 오류', '기타'],
+                '반품요청': ['단순 변심', '제품 오염/이염', '제품 파손', '유통기한 문제', '부분환불', '기타'],
+                '환불요청': ['반품 후 환불 지연', '기타'],
+                '기타문의': ['섭취관련 문의', '제품 성분 문의', '이벤트/사은품', '기타']
             }
         };
 
         // 제품명 데이터: 대분류에 따라 다른 제품명
         const productData = {
             dreame: ['x50master'],
-            aptamil: ['프로푸트라1단계']
+            aptamil: ['프로푸트라1단계'],
+            fortimel: ['포티밀']
         };
 
         // 대분류 변경 시
@@ -454,7 +465,12 @@
 
             // 각 브랜드별로 트리맵 생성
             Object.keys(categoryData).forEach(brand => {
-                const brandName = brand === 'dreame' ? '드리미(dreame)' : '압타밀(Aptamil)';
+                const brandNameMap = {
+                    dreame: '드리미(dreame)',
+                    aptamil: '압타밀(Aptamil)',
+                    fortimel: '포티밀(Fortimel)'
+                };
+                const brandName = brandNameMap[brand] || brand;
                 const products = productData[brand];
                 
                 html += `<div class="brand-section">`;
