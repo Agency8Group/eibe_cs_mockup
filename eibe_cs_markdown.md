@@ -22,16 +22,15 @@
 | 드리미(dreame) | 교환요청 | 제품 파손 | x50master |
 | 드리미(dreame) | 교환요청 | 구성품 누락 | x50master |
 | 드리미(dreame) | 교환요청 | 색상/옵션 오류 | x50master |
+| 드리미(dreame) | 교환요청 | 초기불량 | x50master |
 | 드리미(dreame) | 교환요청 | 기타 | x50master |
 | 드리미(dreame) | 반품요청 | 단순 변심 | x50master |
 | 드리미(dreame) | 반품요청 | 제품 오염/이염 | x50master |
 | 드리미(dreame) | 반품요청 | 제품 파손 | x50master |
 | 드리미(dreame) | 반품요청 | 오주문 | x50master |
+| 드리미(dreame) | 반품요청 | 반품 후 환불 지연 | x50master |
+| 드리미(dreame) | 반품요청 | 부분환불 | x50master |
 | 드리미(dreame) | 반품요청 | 기타 | x50master |
-| 드리미(dreame) | 환불요청 | 반품 후 환불 지연 | x50master |
-| 드리미(dreame) | 환불요청 | 이중결제 | x50master |
-| 드리미(dreame) | 환불요청 | 금액 오류 | x50master |
-| 드리미(dreame) | 환불요청 | 기타 | x50master |
 | 드리미(dreame) | AS접수 | 작동 불량 | x50master |
 | 드리미(dreame) | AS접수 | 부품 누락 | x50master |
 | 드리미(dreame) | AS접수 | 재포장 요청 | x50master |
@@ -55,17 +54,16 @@
 | 압타밀(Aptamil) | 배송문의 | 기타 | 프로푸트라1단계 |
 | 압타밀(Aptamil) | 교환요청 | 제품 오염/이염 | 프로푸트라1단계 |
 | 압타밀(Aptamil) | 교환요청 | 제품 파손 | 프로푸트라1단계 |
-| 압타밀(Aptamil) | 교환요청 | 포장 이상 | 프로푸트라1단계 |
+| 압타밀(Aptamil) | 교환요청 | 이물질 | 프로푸트라1단계 |
 | 압타밀(Aptamil) | 교환요청 | 수량 오류 | 프로푸트라1단계 |
 | 압타밀(Aptamil) | 교환요청 | 기타 | 프로푸트라1단계 |
 | 압타밀(Aptamil) | 반품요청 | 단순 변심 | 프로푸트라1단계 |
 | 압타밀(Aptamil) | 반품요청 | 제품 오염/이염 | 프로푸트라1단계 |
 | 압타밀(Aptamil) | 반품요청 | 제품 파손 | 프로푸트라1단계 |
 | 압타밀(Aptamil) | 반품요청 | 유통기한 문제 | 프로푸트라1단계 |
+| 압타밀(Aptamil) | 반품요청 | 부분환불 | 프로푸트라1단계 |
 | 압타밀(Aptamil) | 반품요청 | 기타 | 프로푸트라1단계 |
 | 압타밀(Aptamil) | 환불요청 | 반품 후 환불 지연 | 프로푸트라1단계 |
-| 압타밀(Aptamil) | 환불요청 | 결제 취소 누락 | 프로푸트라1단계 |
-| 압타밀(Aptamil) | 환불요청 | 금액 오류 | 프로푸트라1단계 |
 | 압타밀(Aptamil) | 환불요청 | 기타 | 프로푸트라1단계 |
 | 압타밀(Aptamil) | 기타문의 | 수유 관련 문의 | 프로푸트라1단계 |
 | 압타밀(Aptamil) | 기타문의 | 제품 성분 문의 | 프로푸트라1단계 |
@@ -84,7 +82,7 @@
 - 배송문의
 - 교환요청
 - 반품요청
-- 환불요청
+- 환불요청 (압타밀만 해당)
 - AS접수 (드리미만 해당)
 - 기타문의
 
@@ -108,16 +106,15 @@
 드리미(dreame)	교환요청	제품 파손	x50master
 드리미(dreame)	교환요청	구성품 누락	x50master
 드리미(dreame)	교환요청	색상/옵션 오류	x50master
+드리미(dreame)	교환요청	초기불량	x50master
 드리미(dreame)	교환요청	기타	x50master
 드리미(dreame)	반품요청	단순 변심	x50master
 드리미(dreame)	반품요청	제품 오염/이염	x50master
 드리미(dreame)	반품요청	제품 파손	x50master
 드리미(dreame)	반품요청	오주문	x50master
+드리미(dreame)	반품요청	반품 후 환불 지연	x50master
+드리미(dreame)	반품요청	부분환불	x50master
 드리미(dreame)	반품요청	기타	x50master
-드리미(dreame)	환불요청	반품 후 환불 지연	x50master
-드리미(dreame)	환불요청	이중결제	x50master
-드리미(dreame)	환불요청	금액 오류	x50master
-드리미(dreame)	환불요청	기타	x50master
 드리미(dreame)	AS접수	작동 불량	x50master
 드리미(dreame)	AS접수	부품 누락	x50master
 드리미(dreame)	AS접수	재포장 요청	x50master
@@ -134,17 +131,16 @@
 압타밀(Aptamil)	배송문의	기타	프로푸트라1단계
 압타밀(Aptamil)	교환요청	제품 오염/이염	프로푸트라1단계
 압타밀(Aptamil)	교환요청	제품 파손	프로푸트라1단계
-압타밀(Aptamil)	교환요청	포장 이상	프로푸트라1단계
+압타밀(Aptamil)	교환요청	이물질	프로푸트라1단계
 압타밀(Aptamil)	교환요청	수량 오류	프로푸트라1단계
 압타밀(Aptamil)	교환요청	기타	프로푸트라1단계
 압타밀(Aptamil)	반품요청	단순 변심	프로푸트라1단계
 압타밀(Aptamil)	반품요청	제품 오염/이염	프로푸트라1단계
 압타밀(Aptamil)	반품요청	제품 파손	프로푸트라1단계
 압타밀(Aptamil)	반품요청	유통기한 문제	프로푸트라1단계
+압타밀(Aptamil)	반품요청	부분환불	프로푸트라1단계
 압타밀(Aptamil)	반품요청	기타	프로푸트라1단계
 압타밀(Aptamil)	환불요청	반품 후 환불 지연	프로푸트라1단계
-압타밀(Aptamil)	환불요청	결제 취소 누락	프로푸트라1단계
-압타밀(Aptamil)	환불요청	금액 오류	프로푸트라1단계
 압타밀(Aptamil)	환불요청	기타	프로푸트라1단계
 압타밀(Aptamil)	기타문의	수유 관련 문의	프로푸트라1단계
 압타밀(Aptamil)	기타문의	제품 성분 문의	프로푸트라1단계
