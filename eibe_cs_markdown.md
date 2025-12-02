@@ -29,7 +29,6 @@
 | 드리미(dreame) | 반품요청 | 제품 파손 | x50master |
 | 드리미(dreame) | 반품요청 | 오주문 | x50master |
 | 드리미(dreame) | 반품요청 | 반품 후 환불 지연 | x50master |
-| 드리미(dreame) | 반품요청 | 부분환불 | x50master |
 | 드리미(dreame) | 반품요청 | 기타 | x50master |
 | 드리미(dreame) | AS접수 | 작동 불량 | x50master |
 | 드리미(dreame) | AS접수 | 부품 누락 | x50master |
@@ -117,7 +116,6 @@
 드리미(dreame)	반품요청	제품 파손	x50master
 드리미(dreame)	반품요청	오주문	x50master
 드리미(dreame)	반품요청	반품 후 환불 지연	x50master
-드리미(dreame)	반품요청	부분환불	x50master
 드리미(dreame)	반품요청	기타	x50master
 드리미(dreame)	AS접수	작동 불량	x50master
 드리미(dreame)	AS접수	부품 누락	x50master
