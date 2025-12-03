@@ -288,6 +288,7 @@
                 <option value="dreame">드리미(dreame)</option>
                 <option value="aptamil">압타밀(Aptamil)</option>
                 <option value="fortimel">포티밀(Fortimel)</option>
+                <option value="laylayt">레이레이(laylayt)</option>
             </select>
         </div>
 
@@ -350,6 +351,14 @@
                 '반품요청': ['단순 변심', '제품 오염/이염', '제품 파손', '유통기한 문제', '부분환불', '기타'],
                 '환불요청': ['반품 후 환불 지연', '기타'],
                 '기타문의': ['섭취관련 문의', '제품 성분 문의', '이벤트/사은품', '기타']
+            },
+            laylayt: {
+                '배송문의': ['배송 지연', '오배송', '배송지 오기입', '수취인 부재', '설치 일정 변경', '송장 미등록', '기타'],
+                '교환요청': ['제품 오염/이염', '제품 파손', '구성품 누락', '색상/옵션 오류', '초기불량', '매트리스 결함', '프레임 불안정', '클레임 사은품 지급', '기타'],
+                '반품요청': ['단순 변심', '제품 오염/이염', '제품 파손', '오주문', '사이즈 불일치', '반품 후 환불 지연', '클레임 사은품 지급', '기타'],
+                'AS접수': ['조립 불량', '부품 누락', '프레임 불안정', '매트리스 결함', '재포장 요청', '기타'],
+                '사용문의': ['침대 사용법', '매트리스 관리', '조립 방법', '제품 사양 문의', '기타'],
+                '기타문의': ['사은품 문의', 'CS 친절도', '기타']
             }
         };
 
@@ -357,7 +366,8 @@
         const productData = {
             dreame: ['x50master'],
             aptamil: ['프로푸트라1단계'],
-            fortimel: ['포티밀']
+            fortimel: ['포티밀'],
+            laylayt: ['매트리스', '침대프레임']
         };
 
         // 대분류 변경 시
@@ -468,7 +478,8 @@
                 const brandNameMap = {
                     dreame: '드리미(dreame)',
                     aptamil: '압타밀(Aptamil)',
-                    fortimel: '포티밀(Fortimel)'
+                    fortimel: '포티밀(Fortimel)',
+                    laylayt: '레이레이(laylayt)'
                 };
                 const brandName = brandNameMap[brand] || brand;
                 const products = productData[brand];
