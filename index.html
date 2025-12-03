@@ -10,27 +10,30 @@
         }
 
         body {
-            font-family: 'Malgun Gothic', '맑은 고딕', Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Segoe UI', 'Malgun Gothic', '맑은 고딕', Arial, sans-serif;
             padding: 40px 20px;
             max-width: 1400px;
             margin: 0 auto;
-            background: #f8f9fa;
+            background: #f5f5f7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         h1 {
             text-align: center;
             margin-bottom: 10px;
-            color: #2c3e50;
-            font-weight: 300;
-            letter-spacing: 1px;
+            color: #1d1d1f;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            font-size: 32px;
         }
 
         .version-info {
             text-align: center;
-            font-size: 12px;
-            color: #95a5a6;
+            font-size: 13px;
+            color: #86868b;
             margin-bottom: 40px;
-            font-weight: 300;
+            font-weight: 400;
         }
 
         .form-container {
@@ -38,10 +41,11 @@
             gap: 20px;
             align-items: flex-end;
             flex-wrap: wrap;
-            background: white;
+            background: #ffffff;
             padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border-radius: 18px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(0, 0, 0, 0.04);
         }
 
         .form-group {
@@ -53,53 +57,53 @@
             display: block;
             margin-bottom: 8px;
             font-weight: 500;
-            color: #34495e;
+            color: #1d1d1f;
             font-size: 13px;
-            letter-spacing: 0.3px;
-            transition: color 0.3s ease;
+            letter-spacing: -0.1px;
+            transition: color 0.2s ease;
         }
 
         .form-group select {
             width: 100%;
             padding: 14px 16px;
-            font-size: 14px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            background: white;
-            color: #2c3e50;
+            font-size: 15px;
+            border: 1px solid #d2d2d7;
+            border-radius: 12px;
+            background: #ffffff;
+            color: #1d1d1f;
             cursor: pointer;
             outline: none;
             appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23686868' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 16px center;
             background-size: 12px;
             padding-right: 40px;
-            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .form-group select:hover {
-            border-color: #b0b0b0;
-            transform: translateY(-1px);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-color: #a1a1a6;
+            background-color: #fafafa;
         }
 
         .form-group select:focus {
-            border-color: #3498db;
-            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
-            transform: translateY(-1px);
+            border-color: #007aff;
+            box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.1);
+            background-color: #ffffff;
         }
 
         .form-group select:disabled {
-            background-color: #f5f5f5;
+            background-color: #f5f5f7;
             cursor: not-allowed;
-            opacity: 0.6;
+            opacity: 0.5;
+            border-color: #e5e5e7;
         }
 
         .form-group select option {
             padding: 12px;
-            background: white;
-            color: #2c3e50;
+            background: #ffffff;
+            color: #1d1d1f;
         }
 
         .button-container {
@@ -108,36 +112,37 @@
         }
 
         .treemap-btn {
-            background: #3498db;
+            background: #007aff;
             color: white;
             border: none;
             padding: 14px 32px;
             font-size: 15px;
             font-weight: 500;
-            border-radius: 8px;
+            border-radius: 12px;
             cursor: pointer;
-            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 2px 8px rgba(0, 122, 255, 0.2);
         }
 
         .treemap-btn:hover {
-            background: #2980b9;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4);
+            background: #0051d5;
+            box-shadow: 0 4px 12px rgba(0, 122, 255, 0.3);
         }
 
         .treemap-btn:active {
-            transform: translateY(0);
+            transform: scale(0.98);
+            box-shadow: 0 1px 4px rgba(0, 122, 255, 0.2);
         }
 
         .treemap-container {
             display: none;
-            background: white;
+            background: #ffffff;
             padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border-radius: 18px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(0, 0, 0, 0.04);
             margin-top: 30px;
-            animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: fadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .treemap-container.show {
@@ -161,30 +166,35 @@
             align-items: center;
             margin-bottom: 30px;
             padding-bottom: 20px;
-            border-bottom: 2px solid #e0e0e0;
+            border-bottom: 1px solid #e5e5e7;
         }
 
         .treemap-title {
             font-size: 24px;
-            font-weight: 500;
-            color: #2c3e50;
+            font-weight: 600;
+            color: #1d1d1f;
             margin: 0;
+            letter-spacing: -0.3px;
         }
 
         .close-btn {
-            background: #e74c3c;
+            background: #ff3b30;
             color: white;
             border: none;
             padding: 8px 16px;
             font-size: 13px;
-            border-radius: 6px;
+            font-weight: 500;
+            border-radius: 10px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
         }
 
         .close-btn:hover {
-            background: #c0392b;
-            transform: scale(1.05);
+            background: #d70015;
+        }
+
+        .close-btn:active {
+            transform: scale(0.96);
         }
 
         .brand-section {
@@ -194,12 +204,12 @@
         .brand-title {
             font-size: 20px;
             font-weight: 600;
-            color: #2c3e50;
+            color: #1d1d1f;
             margin-bottom: 20px;
-            padding: 12px 20px;
-            background: #ecf0f1;
-            border-radius: 8px;
-            border-left: 4px solid #3498db;
+            padding: 14px 20px;
+            background: #f5f5f7;
+            border-radius: 12px;
+            letter-spacing: -0.2px;
         }
 
         .category-table {
@@ -210,29 +220,32 @@
         }
 
         .category-table thead {
-            background: #34495e;
-            color: white;
+            background: #f5f5f7;
+            color: #1d1d1f;
         }
 
         .category-table th {
             padding: 14px 16px;
             text-align: left;
             font-weight: 600;
-            letter-spacing: 0.5px;
+            letter-spacing: -0.1px;
+            font-size: 13px;
+            text-transform: uppercase;
+            color: #86868b;
         }
 
         .category-table td {
             padding: 12px 16px;
-            border-bottom: 1px solid #e0e0e0;
-            color: #2c3e50;
+            border-bottom: 1px solid #e5e5e7;
+            color: #1d1d1f;
         }
 
         .category-table tbody tr {
-            transition: background 0.2s ease;
+            transition: background 0.15s ease;
         }
 
         .category-table tbody tr:hover {
-            background: #f8f9fa;
+            background: #fafafa;
         }
 
         .category-table tbody tr:last-child td {
@@ -241,18 +254,18 @@
 
         .middle-category {
             font-weight: 600;
-            color: #2980b9;
-            background: #ebf5fb;
+            color: #007aff;
+            background: #f0f7ff;
         }
 
         .sub-category {
             padding-left: 30px !important;
-            color: #7f8c8d;
+            color: #86868b;
         }
 
         .product-name {
-            font-style: italic;
-            color: #95a5a6;
+            color: #86868b;
+            font-size: 13px;
         }
 
         @media (max-width: 768px) {
@@ -281,7 +294,7 @@
     </style>
 </head>
 <body>
-    <h1>문의분류v0.0.5</h1>
+    <h1>문의분류v0.0.6</h1>
     <div class="version-info">SKU 최신화 2025-12-03 기준</div>
 
     <div class="button-container">
@@ -373,10 +386,143 @@
 
         // 제품명 데이터: 대분류에 따라 다른 제품명
         const productData = {
-            dreame: ['x50master'],
-            aptamil: ['프로푸트라1단계'],
-            fortimel: ['포티밀'],
-            laylayt: ['매트리스', '침대프레임']
+            dreame: [
+                '(본품) L10S Ultra',
+                '(본품) L10 Prime',
+                '(본품) L20 Ultra',
+                '(본품) L10s Pro Ultra Heat',
+                '(본품) X40 Ultra',
+                '(본품) X50 Ultra (White)',
+                '(본품) X50 Ultra (Black)',
+                '(본품) X50 Master',
+                '(본품) X50s Pro Ultra (White)',
+                '(본품) X50s Pro Master',
+                '(본품) X50s Pro Ultra (Black)',
+                '(본품) LIVO',
+                '(본품) Matrix10 Ultra (white)',
+                '(본품) Matrix10 Ultra (black)',
+                '(본품) Aqua10 Ultra',
+                '(본품) Aqua10 Master',
+                '(본품) X1 air',
+                '(본품) X1 slim',
+                'Heat/L20 사이드 브러쉬',
+                'X40 Ultra 3중컷 브러쉬',
+                'X40 Ultra 악세사리 키트',
+                'X40/L10s 히트 필터',
+                'Heat/L20 메인 브러쉬 커버',
+                'X40/Heat/L20/L10s Ultra 메인 브러쉬',
+                'Matrix/X50s/X50 필터',
+                'X50s/X50 메인 브러쉬 (듀오 브러쉬)',
+                'X50 Ultra 물얼룩 방지필터',
+                'X50 Ultra/X50 Master 브러쉬 커버',
+                'X50 Ultra 악세사리 키트',
+                'X50/X40 사이드 로봇 브러쉬',
+                'X50/X40/Heat/L20/L10s 먼지봉투',
+                'X50/X40/Heat/L20/L10/L10s 물걸레 패드',
+                'X50s 보온 물걸레 패드',
+                '드리미 경사로',
+                'Heat/X40/X50/X50s 직배수 키트',
+                'X50s/X50/X40/Heat/W10 Pro 바닥 클리너',
+                '리보 활성탄 필터',
+                'W10 Pro 필터',
+                'W10 Pro 메인 브러쉬',
+                'W10 Pro 메인 브러쉬 (커버)',
+                'W10 Pro 물걸레 패드 (전용)',
+                'W10 Pro 방습 패드',
+                'W10 Pro 사이드 브러쉬',
+                'W10 Pro 악세사리 키트',
+                '청소솔',
+                'L10s Ultra 필터',
+                'L10s Ultra 메인 브러쉬 (커버)',
+                'L10s Ultra 바닥 클리너 3개입',
+                'L10s Ultra 사이드 브러쉬',
+                'L10s Ultra 악세사리 키트',
+                'L10 Prime 악세사리 키트',
+                'L20 Ultra 필터',
+                'L20 Ultra 바닥 클리너',
+                'L20 Ultra 악세사리 키트',
+                'L20 Ultra 직배수 키트',
+                'L10s Pro Ultra Heat 악세사리 키트',
+                'Aqua10 Ultra 악세사리 키트',
+                'Aqua10 Ultra 직배수 키트',
+                'Aqua10 Ultra 필터',
+                'Aqua10 Ultra 브러쉬 커버',
+                'Aqua10 Ultra 롤러형 물걸레',
+                'Matrix10 Ultra 악세사리 키트',
+                'Matrix10 Ultra 직배수 키트',
+                '기름때 전용 물걸레 패드',
+                '흡수형 물걸레 패드',
+                '리보 건조통',
+                'H12 필터',
+                '반려동물 전용 바닥 클리너'
+            ],
+            aptamil: [
+                '프로누트라 1단계',
+                '프로누트라 2단계',
+                '프로누트라 3단계',
+                '프로푸트라 1단계',
+                '프로푸트라 2단계',
+                '프로푸트라 3단계',
+                '뉴트리시아 네오케이트',
+                '뉴트리시아 듀오칼',
+                '뉴트리시아 인파트리니',
+                '뉴트리시아 압타밀 펩티 시네오',
+                '뉴트리시아 엘리멘탈 028 엑스트라 오렌지 100G',
+                '뉴트리시아 피케이 에이드4 500G',
+                '뉴트리시아 티와이알 아나믹스 400G',
+                '뉴트리시아 엔케이에이치 아나믹스 400G',
+                '뉴트리시아 로렌조 오일 500ML',
+                '뉴트리시아 지에이1 아나믹스 인펀트 400g',
+                '뉴트리시아 지에이1 아나믹스 주니어 400g',
+                '뉴트리시아 엠에스유디 아나믹스 주니어 400g',
+                '뉴트리시아 엠에스유디 맥사멈 500g',
+                '뉴트리시아 로카솔 400g',
+                '뉴트리시아 베이직 에프 300g',
+                '뉴트리시아 엘리멘탈 028 엑스트라 바나나 100G',
+                '뉴트리시아 엘리멘탈 028 엑스트라 무맛 100G',
+                '(직구) 프로누트라 프레 Pronutra Pre',
+                '(직구) 프로누트라 1단계 Pronutra 1',
+                '(직구) 프로누트라 2단계 Pronutra 2',
+                '(직구) 프로누트라 3단계 Pronutra 3',
+                '(직구) 프로누트라 VP 1단계 Pronutra VP 1',
+                '(직구) 프로누트라 VP 2단계 Pronutra VP 2',
+                '(직구) 프로푸트라 프레 Profutura Pre',
+                '(직구) 프로푸트라 1단계 Profutura 1',
+                '(직구) 프로푸트라 1단계 Profutura 2',
+                '(직구) TAB IF',
+                '(직구) TAB FO',
+                '(직구) 프로푸트라 킨더 1단계 Profutura Kinder 1',
+                '(직구) 프로푸트라 킨더 1단계 Profutura Kinder 2',
+                '(직구) AR',
+                '(직구) Comfort',
+                '(직구) 3PF 1+IF',
+                '(직구) 3PF 2+FO',
+                '(직구) 3PN2+FO',
+                '(직구) 3PN PRE +IF',
+                '(직구) 3PF PRE +IF',
+                '(직구) 3PN1+IF'
+            ],
+            fortimel: [
+                '포티멜 프로틴 바닐라향',
+                '(직구) 포티멜 컴팩트 프로틴 모카 Fortimel Compact Protein Mocha',
+                '(직구) 포티멜 컴팩트 프로틴 뉴트럴(무맛) Fortimel Compact Protein Neu',
+                '(직구) 포티멜 컴팩트 프로틴 쿨 레드프루트맛 Fortimel Compact Protein Cool Redfruit',
+                '(직구) 포티멜 컴팩트 프로틴 핫 진저맛 Fortimel Compact Protein Hot Ginger'
+            ],
+            laylayt: [
+                '(매트리스) 레이레이 LAYZ-1 픽셀 스프링 매트리스',
+                '(매트리스) 레이레이 LAYZ-1 픽셀 스프링 하이브리드 매트리스',
+                '(매트리스) 레이레이 LAYZ-2 픽셀 스프링 매트리스',
+                '(매트리스) 레이레이 LAYZ-2 픽셀 스프링 하이브리드 매트리스',
+                '(매트리스) 레이레이 LAYZ-3 픽셀 스프링 매트리스',
+                '(매트리스) 레이레이 LAYZ-3 픽셀 스프링 하이브리드 매트리스',
+                '(토퍼) 레이레이 T5 메모리폼 토퍼',
+                '(토퍼) 레이레이 T10 메모리폼 토퍼',
+                '(토퍼) 레이레이 스프링 필로우',
+                '(토퍼) 레이레이 메모리폼 필로우',
+                '(토퍼) 레이레이 매트리스 커버',
+                '(토퍼) 레이레이 침대 패드'
+            ]
         };
 
         // 대분류 변경 시
