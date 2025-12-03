@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>고객센터 트리맵</title>
+    <title>고객센터 테이블</title>
     <style>
         * {
             box-sizing: border-box;
@@ -111,7 +111,7 @@
             margin: 30px 0;
         }
 
-        .treemap-btn {
+        .table-btn {
             background: #007aff;
             color: white;
             border: none;
@@ -124,17 +124,17 @@
             box-shadow: 0 2px 8px rgba(0, 122, 255, 0.2);
         }
 
-        .treemap-btn:hover {
+        .table-btn:hover {
             background: #0051d5;
             box-shadow: 0 4px 12px rgba(0, 122, 255, 0.3);
         }
 
-        .treemap-btn:active {
+        .table-btn:active {
             transform: scale(0.98);
             box-shadow: 0 1px 4px rgba(0, 122, 255, 0.2);
         }
 
-        .treemap-container {
+        .table-container {
             display: none;
             background: #ffffff;
             padding: 40px;
@@ -145,7 +145,7 @@
             animation: fadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .treemap-container.show {
+        .table-container.show {
             display: block;
         }
 
@@ -160,7 +160,7 @@
             }
         }
 
-        .treemap-header {
+        .table-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -169,7 +169,7 @@
             border-bottom: 1px solid #e5e5e7;
         }
 
-        .treemap-title {
+        .table-title {
             font-size: 24px;
             font-weight: 600;
             color: #1d1d1f;
@@ -278,7 +278,7 @@
                 min-width: 100%;
             }
 
-            .treemap-container {
+            .table-container {
                 padding: 20px;
             }
 
@@ -298,7 +298,7 @@
     <div class="version-info">SKU 최신화 2025-12-03 기준</div>
 
     <div class="button-container">
-        <button class="treemap-btn" onclick="toggleTreemap()">전체 트리맵 보기</button>
+        <button class="table-btn" onclick="toggleTable()">전체 테이블 보기</button>
     </div>
 
     <div class="form-container">
@@ -339,12 +339,12 @@
         </div>
     </div>
 
-    <div class="treemap-container" id="treemapContainer">
-        <div class="treemap-header">
-            <h2 class="treemap-title">전체 문의분류 트리맵</h2>
-            <button class="close-btn" onclick="toggleTreemap()">닫기</button>
+    <div class="table-container" id="tableContainer">
+        <div class="table-header">
+            <h2 class="table-title">전체 문의분류 테이블</h2>
+            <button class="close-btn" onclick="toggleTable()">닫기</button>
         </div>
-        <div id="treemapContent"></div>
+        <div id="tableContent"></div>
     </div>
 
     <script>
@@ -613,22 +613,22 @@
             }
         }
 
-        // 트리맵 토글
-        function toggleTreemap() {
-            const container = document.getElementById('treemapContainer');
+        // 테이블 토글
+        function toggleTable() {
+            const container = document.getElementById('tableContainer');
             container.classList.toggle('show');
             
             if (container.classList.contains('show')) {
-                renderTreemap();
+                renderTable();
             }
         }
 
-        // 트리맵 렌더링
-        function renderTreemap() {
-            const content = document.getElementById('treemapContent');
+        // 테이블 렌더링
+        function renderTable() {
+            const content = document.getElementById('tableContent');
             let html = '';
 
-            // 각 브랜드별로 트리맵 생성
+            // 각 브랜드별로 테이블 생성
             Object.keys(categoryData).forEach(brand => {
                 const brandNameMap = {
                     dreame: '드리미(dreame)',
