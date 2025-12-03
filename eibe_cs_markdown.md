@@ -16,6 +16,7 @@
 | 드리미(dreame) | 배송문의 | 오배송 | x50master |
 | 드리미(dreame) | 배송문의 | 배송지 오기입 | x50master |
 | 드리미(dreame) | 배송문의 | 수취인 부재 | x50master |
+| 드리미(dreame) | 배송문의 | 설치 일정 변경 | x50master |
 | 드리미(dreame) | 배송문의 | 송장 미등록 | x50master |
 | 드리미(dreame) | 배송문의 | 기타 | x50master |
 | 드리미(dreame) | 교환요청 | 제품 오염/이염 | x50master |
@@ -187,6 +188,7 @@
 드리미(dreame)	배송문의	오배송	x50master
 드리미(dreame)	배송문의	배송지 오기입	x50master
 드리미(dreame)	배송문의	수취인 부재	x50master
+드리미(dreame)	배송문의	설치 일정 변경	x50master
 드리미(dreame)	배송문의	송장 미등록	x50master
 드리미(dreame)	배송문의	기타	x50master
 드리미(dreame)	교환요청	제품 오염/이염	x50master
