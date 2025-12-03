@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>고객센터 테이블</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <style>
         * {
             box-sizing: border-box;
@@ -11,41 +12,126 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Segoe UI', 'Malgun Gothic', '맑은 고딕', Arial, sans-serif;
-            padding: 40px 20px;
-            max-width: 1400px;
-            margin: 0 auto;
+            padding: 0;
+            margin: 0;
             background: #f5f5f7;
+            min-height: 100vh;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
 
+        .main-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .header-container {
+            background: #ffffff;
+            padding: 32px 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            margin-bottom: 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .header-content {
+            flex: 1;
+        }
+
         h1 {
-            text-align: center;
-            margin-bottom: 10px;
+            margin: 0 0 8px 0;
             color: #1d1d1f;
-            font-weight: 600;
-            letter-spacing: -0.5px;
-            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -0.8px;
+            font-size: 36px;
+            line-height: 1.2;
         }
 
         .version-info {
-            text-align: center;
             font-size: 13px;
             color: #86868b;
-            margin-bottom: 40px;
             font-weight: 400;
+            margin: 0;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .download-btn {
+            background: #1d1d1f;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+
+        .download-btn:hover {
+            background: #2c2c2e;
+        }
+
+        .download-btn:active {
+            background: #1d1d1f;
+        }
+
+        .download-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 24px;
+            }
+
+            .header-actions {
+                width: 100%;
+                justify-content: flex-end;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin: 0 0 20px 0;
+            letter-spacing: -0.3px;
+        }
+
+        .form-section {
+            background: #ffffff;
+            padding: 32px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            margin-bottom: 32px;
         }
 
         .form-container {
-            display: flex;
-            gap: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
             align-items: flex-end;
-            flex-wrap: wrap;
-            background: #ffffff;
-            padding: 30px;
-            border-radius: 18px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-            border: 1px solid rgba(0, 0, 0, 0.04);
         }
 
         .form-group {
@@ -106,43 +192,57 @@
             color: #1d1d1f;
         }
 
-        .button-container {
-            text-align: center;
-            margin: 30px 0;
+        .action-section {
+            background: #ffffff;
+            padding: 24px 32px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            margin-bottom: 32px;
+            display: flex;
+            justify-content: center;
         }
 
         .table-btn {
-            background: #007aff;
+            background: #1d1d1f;
             color: white;
             border: none;
-            padding: 14px 32px;
-            font-size: 15px;
+            padding: 16px 40px;
+            font-size: 16px;
             font-weight: 500;
-            border-radius: 12px;
+            border-radius: 10px;
             cursor: pointer;
             transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 2px 8px rgba(0, 122, 255, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .table-btn:hover {
-            background: #0051d5;
-            box-shadow: 0 4px 12px rgba(0, 122, 255, 0.3);
+            background: #2c2c2e;
         }
 
         .table-btn:active {
-            transform: scale(0.98);
-            box-shadow: 0 1px 4px rgba(0, 122, 255, 0.2);
+            background: #1d1d1f;
+        }
+
+        .table-btn::before {
+            content: '';
+            width: 18px;
+            height: 18px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='white' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2'/%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
         }
 
         .table-container {
             display: none;
             background: #ffffff;
             padding: 40px;
-            border-radius: 18px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-            border: 1px solid rgba(0, 0, 0, 0.04);
-            margin-top: 30px;
-            animation: fadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            margin-bottom: 32px;
+            animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .table-container.show {
@@ -164,52 +264,57 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #e5e5e7;
+            margin-bottom: 32px;
+            padding-bottom: 24px;
+            border-bottom: 2px solid #f5f5f7;
         }
 
         .table-title {
-            font-size: 24px;
-            font-weight: 600;
+            font-size: 28px;
+            font-weight: 700;
             color: #1d1d1f;
             margin: 0;
-            letter-spacing: -0.3px;
+            letter-spacing: -0.5px;
         }
 
         .close-btn {
-            background: #ff3b30;
+            background: #86868b;
             color: white;
             border: none;
-            padding: 8px 16px;
-            font-size: 13px;
+            padding: 10px 20px;
+            font-size: 14px;
             font-weight: 500;
             border-radius: 10px;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .close-btn:hover {
-            background: #d70015;
+            background: #6e6e73;
         }
 
         .close-btn:active {
-            transform: scale(0.96);
+            background: #86868b;
         }
 
         .brand-section {
-            margin-bottom: 50px;
+            margin-bottom: 48px;
+        }
+
+        .brand-section:last-child {
+            margin-bottom: 0;
         }
 
         .brand-title {
-            font-size: 20px;
+            font-size: 22px;
             font-weight: 600;
             color: #1d1d1f;
-            margin-bottom: 20px;
-            padding: 14px 20px;
+            margin-bottom: 24px;
+            padding: 16px 24px;
             background: #f5f5f7;
             border-radius: 12px;
-            letter-spacing: -0.2px;
+            letter-spacing: -0.3px;
+            border-left: 4px solid #1d1d1f;
         }
 
         .category-table {
@@ -269,9 +374,21 @@
         }
 
         @media (max-width: 768px) {
+            .main-wrapper {
+                padding: 20px 16px;
+            }
+
+            .header-container {
+                padding: 24px;
+            }
+
+            .form-section {
+                padding: 24px;
+            }
+
             .form-container {
-                flex-direction: column;
-                align-items: stretch;
+                grid-template-columns: 1fr;
+                gap: 20px;
             }
 
             .form-group {
@@ -279,7 +396,7 @@
             }
 
             .table-container {
-                padding: 20px;
+                padding: 24px;
             }
 
             .category-table {
@@ -288,20 +405,40 @@
 
             .category-table th,
             .category-table td {
-                padding: 8px 10px;
+                padding: 10px 12px;
+            }
+
+            .action-section {
+                padding: 20px;
+            }
+
+            .table-btn {
+                width: 100%;
+                justify-content: center;
             }
         }
     </style>
 </head>
 <body>
-    <h1>문의분류v0.0.6</h1>
-    <div class="version-info">SKU 최신화 2025-12-03 기준</div>
+    <div class="main-wrapper">
+        <div class="header-container">
+            <div class="header-content">
+                <h1>문의분류 시스템</h1>
+                <div class="version-info">v0.0.6 · SKU 최신화 2025-12-03 기준</div>
+            </div>
+            <div class="header-actions">
+                <button class="download-btn" onclick="downloadExcel()">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                    엑셀 다운로드
+                </button>
+            </div>
+        </div>
 
-    <div class="button-container">
-        <button class="table-btn" onclick="toggleTable()">전체 테이블 보기</button>
-    </div>
-
-    <div class="form-container">
+        <div class="form-section">
+            <h2 class="section-title">문의 분류 선택</h2>
+            <div class="form-container">
         <!-- 1단계: 대분류 선택 (브랜드) -->
         <div class="form-group">
             <label for="mainCategory">대분류</label>
@@ -337,14 +474,20 @@
                 <option value="">선택하세요</option>
             </select>
         </div>
-    </div>
+            </div>
+        </div>
 
-    <div class="table-container" id="tableContainer">
+        <div class="action-section">
+            <button class="table-btn" onclick="toggleTable()">전체 테이블 펼쳐보기</button>
+        </div>
+
+        <div class="table-container" id="tableContainer">
         <div class="table-header">
             <h2 class="table-title">전체 문의분류 테이블</h2>
             <button class="close-btn" onclick="toggleTable()">닫기</button>
         </div>
         <div id="tableContent"></div>
+        </div>
     </div>
 
     <script>
@@ -676,6 +819,89 @@
             });
 
             content.innerHTML = html;
+        }
+
+        // 엑셀 다운로드 함수
+        function downloadExcel() {
+            try {
+                // 워크북 생성
+                const wb = XLSX.utils.book_new();
+                
+                // 각 브랜드별로 시트 생성
+                Object.keys(categoryData).forEach(brand => {
+                    const brandNameMap = {
+                        dreame: '드리미(dreame)',
+                        aptamil: '압타밀(Aptamil)',
+                        fortimel: '포티밀(Fortimel)',
+                        laylayt: '레이레이(laylayt)'
+                    };
+                    const brandName = brandNameMap[brand] || brand;
+                    const products = productData[brand];
+                    
+                    // 데이터 배열 생성
+                    const data = [];
+                    
+                    // 헤더 추가
+                    data.push(['대분류', '중분류', '소분류', '제품명']);
+                    
+                    // 각 중분류별로 데이터 추가
+                    Object.keys(categoryData[brand]).forEach(middleCategory => {
+                        const subCategories = categoryData[brand][middleCategory];
+                        
+                        subCategories.forEach((subCategory, index) => {
+                            const row = [];
+                            
+                            // 첫 번째 행에만 대분류와 중분류 표시
+                            if (index === 0) {
+                                row.push(brandName);
+                                row.push(middleCategory);
+                            } else {
+                                row.push('');
+                                row.push('');
+                            }
+                            
+                            row.push(subCategory);
+                            
+                            // 첫 번째 행에만 제품명 표시
+                            if (index === 0) {
+                                row.push(products.join(', '));
+                            } else {
+                                row.push('');
+                            }
+                            
+                            data.push(row);
+                        });
+                    });
+                    
+                    // 워크시트 생성
+                    const ws = XLSX.utils.aoa_to_sheet(data);
+                    
+                    // 컬럼 너비 설정
+                    ws['!cols'] = [
+                        { wch: 20 }, // 대분류
+                        { wch: 25 }, // 중분류
+                        { wch: 30 }, // 소분류
+                        { wch: 80 }  // 제품명
+                    ];
+                    
+                    // 시트를 워크북에 추가
+                    XLSX.utils.book_append_sheet(wb, ws, brandName);
+                });
+                
+                // 파일명 생성 (현재 날짜 포함)
+                const today = new Date();
+                const dateStr = today.getFullYear() + 
+                               String(today.getMonth() + 1).padStart(2, '0') + 
+                               String(today.getDate()).padStart(2, '0');
+                const fileName = `문의분류_${dateStr}.xlsx`;
+                
+                // 엑셀 파일 다운로드
+                XLSX.writeFile(wb, fileName);
+                
+            } catch (error) {
+                console.error('엑셀 다운로드 중 오류 발생:', error);
+                alert('엑셀 다운로드 중 오류가 발생했습니다. 콘솔을 확인해주세요.');
+            }
         }
     </script>
 </body>
