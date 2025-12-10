@@ -94,12 +94,6 @@
 - (직구) 프로푸트라 킨더 1단계 Profutura Kinder 2
 - (직구) AR
 - (직구) Comfort
-- (직구) 3PF 1+IF
-- (직구) 3PF 2+FO
-- (직구) 3PN2+FO
-- (직구) 3PN PRE +IF
-- (직구) 3PF PRE +IF
-- (직구) 3PN1+IF
 
 ### 분류 구조
 | 중분류 | 소분류 |
