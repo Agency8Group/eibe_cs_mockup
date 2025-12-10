@@ -149,6 +149,12 @@
             transition: color 0.2s ease;
         }
 
+        .form-group label .required-note {
+            color: #ff3b30;
+            font-size: 11px;
+            font-weight: 400;
+        }
+
         .form-group select {
             width: 100%;
             padding: 14px 16px;
@@ -190,6 +196,74 @@
             padding: 12px;
             background: #ffffff;
             color: #1d1d1f;
+        }
+
+        .form-group input[type="text"] {
+            width: 100%;
+            padding: 14px 16px;
+            font-size: 15px;
+            border: 1px solid #d2d2d7;
+            border-radius: 12px;
+            background: #ffffff;
+            color: #1d1d1f;
+            outline: none;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .form-group input[type="text"]:hover {
+            border-color: #a1a1a6;
+            background-color: #fafafa;
+        }
+
+        .form-group input[type="text"]:focus {
+            border-color: #007aff;
+            box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.1);
+            background-color: #ffffff;
+        }
+
+        .form-group input[type="text"]:disabled {
+            background-color: #f5f5f7;
+            cursor: not-allowed;
+            opacity: 0.5;
+            border-color: #e5e5e7;
+        }
+
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 16px;
+            font-size: 15px;
+            border: 1px solid #d2d2d7;
+            border-radius: 12px;
+            background: #ffffff;
+            color: #1d1d1f;
+            outline: none;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            resize: vertical;
+            min-height: 150px;
+            font-family: inherit;
+            line-height: 1.5;
+        }
+
+        .form-group textarea:hover {
+            border-color: #a1a1a6;
+            background-color: #fafafa;
+        }
+
+        .form-group textarea:focus {
+            border-color: #007aff;
+            box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.1);
+            background-color: #ffffff;
+        }
+
+        .form-group textarea:disabled {
+            background-color: #f5f5f7;
+            cursor: not-allowed;
+            opacity: 0.5;
+            border-color: #e5e5e7;
+        }
+
+        .form-group-full-width {
+            grid-column: 1 / -1;
         }
 
         .action-section {
@@ -474,6 +548,18 @@
                 <option value="">선택하세요</option>
             </select>
         </div>
+
+        <!-- 5단계: 상세옵션 입력 -->
+        <div class="form-group" id="detailOptionGroup">
+            <label for="detailOption">상세옵션<span class="required-note">(추가기재 가능한 섹션 구현필요)</span></label>
+            <input type="text" id="detailOption" placeholder="상세옵션을 입력하세요" />
+        </div>
+
+        <!-- 6단계: 상담이력 기재란 -->
+        <div class="form-group form-group-full-width" id="consultationHistoryGroup">
+            <label for="consultationHistory">상담이력 기재란</label>
+            <textarea id="consultationHistory" placeholder="상담이력을 입력하세요"></textarea>
+        </div>
             </div>
         </div>
 
@@ -494,7 +580,8 @@
         // 데이터 구조: 대분류(브랜드) > 중분류 > 소분류
         const categoryData = {
             dreame: {
-                '배송문의': ['배송 지연', '오배송', '배송지 오기입', '수취인 부재', '설치 일정 변경', '송장 미등록', '기타'],
+                '배송문의': ['배송 지연', '오배송', '배송지 오기입', '수취인 부재', '송장 미등록', '기타'],
+                '직배수 문의': ['설치방법', '기사방문일정', '작동불량', '누수'],
                 '교환요청': ['제품 오염/이염', '제품 파손', '구성품 누락', '색상/옵션 오류', '초기불량', '클레임 사은품 지급', '기타'],
                 '반품요청': ['단순 변심', '제품 오염/이염', '제품 파손', '오주문', '반품 후 환불 지연', '클레임 사은품 지급', '기타'],
                 'AS접수': ['작동 불량', '부품 누락', '재포장 요청', '기타'],
@@ -548,56 +635,12 @@
                 '(본품) L20 Ultra',
                 '(본품) L10 Prime',
                 '(본품) L10S Ultra',
-                'Heat/L20 사이드 브러쉬',
-                'X40 Ultra 3중컷 브러쉬',
-                'X40 Ultra 악세사리 키트',
-                'X40/L10s 히트 필터',
-                'Heat/L20 메인 브러쉬 커버',
-                'X40/Heat/L20/L10s Ultra 메인 브러쉬',
-                'Matrix/X50s/X50 필터',
-                'X50s/X50 메인 브러쉬 (듀오 브러쉬)',
-                'X50 Ultra 물얼룩 방지필터',
-                'X50 Ultra/X50 Master 브러쉬 커버',
-                'X50 Ultra 악세사리 키트',
-                'X50/X40 사이드 로봇 브러쉬',
-                'X50/X40/Heat/L20/L10s 먼지봉투',
-                'X50/X40/Heat/L20/L10/L10s 물걸레 패드',
-                'X50s 보온 물걸레 패드',
-                '드리미 경사로',
-                'Heat/X40/X50/X50s 직배수 키트',
-                'X50s/X50/X40/Heat/W10 Pro 바닥 클리너',
-                '리보 활성탄 필터',
-                'W10 Pro 필터',
-                'W10 Pro 메인 브러쉬',
-                'W10 Pro 메인 브러쉬 (커버)',
-                'W10 Pro 물걸레 패드 (전용)',
-                'W10 Pro 방습 패드',
-                'W10 Pro 사이드 브러쉬',
-                'W10 Pro 악세사리 키트',
-                '청소솔',
-                'L10s Ultra 필터',
-                'L10s Ultra 메인 브러쉬 (커버)',
-                'L10s Ultra 바닥 클리너 3개입',
-                'L10s Ultra 사이드 브러쉬',
-                'L10s Ultra 악세사리 키트',
-                'L10 Prime 악세사리 키트',
-                'L20 Ultra 필터',
-                'L20 Ultra 바닥 클리너',
-                'L20 Ultra 악세사리 키트',
-                'L20 Ultra 직배수 키트',
-                'L10s Pro Ultra Heat 악세사리 키트',
-                'Aqua10 Ultra 악세사리 키트',
-                'Aqua10 Ultra 직배수 키트',
-                'Aqua10 Ultra 필터',
-                'Aqua10 Ultra 브러쉬 커버',
-                'Aqua10 Ultra 롤러형 물걸레',
-                'Matrix10 Ultra 악세사리 키트',
-                'Matrix10 Ultra 직배수 키트',
-                '기름때 전용 물걸레 패드',
-                '흡수형 물걸레 패드',
-                '리보 건조통',
-                'H12 필터',
-                '반려동물 전용 바닥 클리너'
+                '직배수 키트',
+                '악세사리 키트',
+                '사이드 브러쉬',
+                '메인 브러쉬',
+                '물걸레 패드/롤러',
+                '기타 소모품'
             ],
             aptamil: [
                 '프로누트라 1단계',
@@ -755,6 +798,39 @@
                 console.log('선택된 제품명:', productName);
             }
         }
+
+        // 상세옵션 변경 시
+        function onDetailOptionChange() {
+            const detailOption = document.getElementById('detailOption').value;
+            
+            // 입력된 상세옵션을 콘솔에 출력 (실제 사용 시 여기에 로직 추가)
+            if (detailOption) {
+                console.log('입력된 상세옵션:', detailOption);
+            }
+        }
+
+        // 상담이력 변경 시
+        function onConsultationHistoryChange() {
+            const consultationHistory = document.getElementById('consultationHistory').value;
+            
+            // 입력된 상담이력을 콘솔에 출력 (실제 사용 시 여기에 로직 추가)
+            if (consultationHistory) {
+                console.log('입력된 상담이력:', consultationHistory);
+            }
+        }
+
+        // 상세옵션 입력 필드 이벤트 리스너 추가
+        document.addEventListener('DOMContentLoaded', function() {
+            const detailOptionInput = document.getElementById('detailOption');
+            if (detailOptionInput) {
+                detailOptionInput.addEventListener('input', onDetailOptionChange);
+            }
+            
+            const consultationHistoryTextarea = document.getElementById('consultationHistory');
+            if (consultationHistoryTextarea) {
+                consultationHistoryTextarea.addEventListener('input', onConsultationHistoryChange);
+            }
+        });
 
         // 테이블 토글
         function toggleTable() {

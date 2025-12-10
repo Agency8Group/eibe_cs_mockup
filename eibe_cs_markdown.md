@@ -11,79 +11,40 @@
 ## 드리미(dreame)
 
 ### 제품명 리스트
-- (본품) L10S Ultra
-- (본품) L10 Prime
-- (본품) L20 Ultra
-- (본품) L10s Pro Ultra Heat
-- (본품) X40 Ultra
-- (본품) X50 Ultra (White)
-- (본품) X50 Ultra (Black)
-- (본품) X50 Master
-- (본품) X50s Pro Ultra (White)
-- (본품) X50s Pro Master
-- (본품) X50s Pro Ultra (Black)
-- (본품) LIVO
-- (본품) Matrix10 Ultra (white)
-- (본품) Matrix10 Ultra (black)
-- (본품) Aqua10 Ultra
+
+#### 본품
 - (본품) Aqua10 Master
-- (본품) X1 air
+- (본품) Aqua10 Ultra
+- (본품) Matrix10 Ultra (black)
+- (본품) Matrix10 Ultra (white)
 - (본품) X1 slim
-- Heat/L20 사이드 브러쉬
-- X40 Ultra 3중컷 브러쉬
-- X40 Ultra 악세사리 키트
-- X40/L10s 히트 필터
-- Heat/L20 메인 브러쉬 커버
-- X40/Heat/L20/L10s Ultra 메인 브러쉬
-- Matrix/X50s/X50 필터
-- X50s/X50 메인 브러쉬 (듀오 브러쉬)
-- X50 Ultra 물얼룩 방지필터
-- X50 Ultra/X50 Master 브러쉬 커버
-- X50 Ultra 악세사리 키트
-- X50/X40 사이드 로봇 브러쉬
-- X50/X40/Heat/L20/L10s 먼지봉투
-- X50/X40/Heat/L20/L10/L10s 물걸레 패드
-- X50s 보온 물걸레 패드
-- 드리미 경사로
-- Heat/X40/X50/X50s 직배수 키트
-- X50s/X50/X40/Heat/W10 Pro 바닥 클리너
-- 리보 활성탄 필터
-- W10 Pro 필터
-- W10 Pro 메인 브러쉬
-- W10 Pro 메인 브러쉬 (커버)
-- W10 Pro 물걸레 패드 (전용)
-- W10 Pro 방습 패드
-- W10 Pro 사이드 브러쉬
-- W10 Pro 악세사리 키트
-- 청소솔
-- L10s Ultra 필터
-- L10s Ultra 메인 브러쉬 (커버)
-- L10s Ultra 바닥 클리너 3개입
-- L10s Ultra 사이드 브러쉬
-- L10s Ultra 악세사리 키트
-- L10 Prime 악세사리 키트
-- L20 Ultra 필터
-- L20 Ultra 바닥 클리너
-- L20 Ultra 악세사리 키트
-- L20 Ultra 직배수 키트
-- L10s Pro Ultra Heat 악세사리 키트
-- Aqua10 Ultra 악세사리 키트
-- Aqua10 Ultra 직배수 키트
-- Aqua10 Ultra 필터
-- Aqua10 Ultra 브러쉬 커버
-- Aqua10 Ultra 롤러형 물걸레
-- Matrix10 Ultra 악세사리 키트
-- Matrix10 Ultra 직배수 키트
-- 기름때 전용 물걸레 패드
-- 흡수형 물걸레 패드
-- 리보 건조통
-- H12 필터
-- 반려동물 전용 바닥 클리너
+- (본품) X1 air
+- (본품) LIVO
+- (본품) X50s Pro Ultra (Black)
+- (본품) X50s Pro Master
+- (본품) X50s Pro Ultra (White)
+- (본품) X50 Master
+- (본품) X50 Ultra (Black)
+- (본품) X50 Ultra (White)
+- (본품) X40 Ultra
+- (본품) L10s Pro Ultra Heat
+- (본품) L20 Ultra
+- (본품) L10 Prime
+- (본품) L10S Ultra
+
+#### 소모품 카테고리
+- 직배수 키트
+- 악세사리 키트
+- 사이드 브러쉬
+- 메인 브러쉬
+- 물걸레 패드/롤러
+- 기타 소모품
 
 ### 분류 구조
 | 중분류 | 소분류 |
 |--------|--------|
-| 배송문의 | 배송 지연, 오배송, 배송지 오기입, 수취인 부재, 설치 일정 변경, 송장 미등록, 기타 |
+| 배송문의 | 배송 지연, 오배송, 배송지 오기입, 수취인 부재, 송장 미등록, 기타 |
+| 직배수 문의 | 설치방법, 기사방문일정, 작동불량, 누수 |
 | 교환요청 | 제품 오염/이염, 제품 파손, 구성품 누락, 색상/옵션 오류, 초기불량, 클레임 사은품 지급, 기타 |
 | 반품요청 | 단순 변심, 제품 오염/이염, 제품 파손, 오주문, 반품 후 환불 지연, 클레임 사은품 지급, 기타 |
 | AS접수 | 작동 불량, 부품 누락, 재포장 요청, 기타 |
@@ -206,3 +167,6 @@
 - 각 브랜드별로 제품명 리스트가 다름
 - 중분류는 브랜드별로 일부 차이 있음 (예: AS접수는 드리미/레이레이만, 환불요청은 압타밀/포티밀만)
 - 소분류는 중분류별로 상세 항목이 다름
+- 드리미 제품 리스트는 본품과 소모품 카테고리로 구분됨
+- 상세옵션: 제품명 선택 후 추가로 기재할 수 있는 텍스트 입력 필드
+- 상담이력 기재란: 상담 내용을 기록할 수 있는 큰 텍스트 영역
